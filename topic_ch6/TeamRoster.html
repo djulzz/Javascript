@@ -5,6 +5,14 @@
 	<link rel="stylesheet" type="text/css" href="js_styles.css">
 
 	<script type="text/javascript">
+		/**
+		 * This variable will hold all our contacts (that means multiple players)
+		 */
+		var g_Contact_players = new Array();
+
+		// This variable keep tracks of the assigned coach
+		var g_Contact_coach;
+
 		function Contact()
 		{
 			this.m_FirstName = "";
@@ -16,26 +24,88 @@
 
 		function Contact( fName, lName, ssn )
 		{
-			
+			this.m_FirstName = fName;
+			this.m_LastName = lName;
+			this.m_ssn = ssn;
 		}
-		/**
-		 * This variable will hold all our contacts (that means multiple players)
-		 */
-		var g_Contact_players;
 
-		// This variable keep tracks of the assigned coach
-		var g_Contact_coach;
+		function AddPlayer()
+		{
+			var fName = document.players.player_first_name.value;
+			var lName = document.players.player_last_name.value;
+			var ssn   = document.players.player_ssn.value;
+
+			var new_player_contact = Contact( fName, lName, ssn );
+
+			var previous_numElements = g_Contact_players.length;
+
+			g_Contact_players.push( new_player_contact );
+
+			var new_newElemements = g_Contact_players.length;
+			window.alert( "the number of elements in the player array is = " + new_newElemements );
+		}
+
+		function UpdatePlayerSelection()
+		{
+			//document
+		}
+
 	</script>
 </head>
 	<body>
 	<h1>Team Roster</h1>
 
 		<form name="players">
-			First Name: <input type="text" name="player_first_name"> <br>
-			Last Name: <input type="text" name="player_last_name"> <br>
-			SSN: <input type="text" name="player_ssn"> <br>
+			 
+			 
+			
 
-			<input type="" name="">
+			<table name="table_player_inputs">
+				<tr> <!-- Table Row -->
+					<td> <!-- Table Data -->
+						First Name:
+					</td>
+					<td>
+						<input type="text" name="player_first_name">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Last Name:
+					</td>
+
+					<td>
+						<input type="text" name="player_last_name">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						SSN:
+					</td>
+
+					<td>
+						<input type="text" name="player_ssn">
+					</td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td>
+						<input type="button" name="btn_add_player" value="Add Player" onclick="AddPlayer()">
+					</td>
+
+					<td>
+						<input type="button" name="btn_rem_player" value="Remove Player" onclick="RemovePlayer()">
+					</td>
+				</tr>
+			</table>
+			
+			<select size=13 style="width : 150px" onselect="UpdatePlayerSelection()">
+				<option name="playa value="">Empty</option>
+			</select>
 		</form>
 	</body>
 </html>
