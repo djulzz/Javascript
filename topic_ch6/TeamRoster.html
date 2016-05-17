@@ -40,15 +40,11 @@
 			var ssn   = document.players.player_ssn.value;
 
 			// creating a Contact object to store those attributes
-			var new_player_contact = Contact( fName, lName, ssn );
-
-			//var previous_numElements = g_Contact_players.length;
+			var new_player_contact = new Contact( fName, lName, ssn );
 
 			// add the newly created contact to the array of contacts
 			g_Contact_players.push( new_player_contact );
 
-			//var new_newElemements = g_Contact_players.length;
-			// window.alert( "the number of elements in the player array is = " + new_newElemements );
 
 			// Creating an option, because we want to add it to our select container
 			var option = document.createElement("option");
@@ -58,11 +54,24 @@
 			option.text = lName + ", " + fName;
 
 			document.players.player_selection.add( option );
+
+			document.players.player_first_name.value = "";
+			document.players.player_last_name.value = "";
+			document.players.player_ssn.value = "";
 		}
 
 		function UpdatePlayerSelection()
 		{
-			//document
+			
+			var selected_index = document.players.player_selection.selectedIndex;
+
+			var fName = g_Contact_players[ selected_index ].m_FirstName;
+			var lName = g_Contact_players[ selected_index ].m_LastName;
+			var ssn = g_Contact_players[ selected_index ].m_ssn;
+
+			document.players.player_first_name.value = fName;
+			document.players.player_last_name.value = lName;
+			document.players.player_ssn.value = ssn;
 		}
 
 	</script>
@@ -118,8 +127,8 @@
 				</tr>
 			</table>
 			
-			<select name = "player_selection" size=13 style="width : 150px" onselect="UpdatePlayerSelection()">
-				<option name="playa value="">Empty</option>
+			<select name = "player_selection" size=13 style="width : 150px" onChange="UpdatePlayerSelection()">
+<!-- 				<option name="playa_value="">Empty</option> -->
 			</select>
 		</form>
 	</body>
