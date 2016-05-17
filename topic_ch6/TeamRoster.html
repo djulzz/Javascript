@@ -31,18 +31,33 @@
 
 		function AddPlayer()
 		{
+			/**
+			 * Getting all attributes from the form
+			 */
+
 			var fName = document.players.player_first_name.value;
 			var lName = document.players.player_last_name.value;
 			var ssn   = document.players.player_ssn.value;
 
+			// creating a Contact object to store those attributes
 			var new_player_contact = Contact( fName, lName, ssn );
 
-			var previous_numElements = g_Contact_players.length;
+			//var previous_numElements = g_Contact_players.length;
 
+			// add the newly created contact to the array of contacts
 			g_Contact_players.push( new_player_contact );
 
-			var new_newElemements = g_Contact_players.length;
-			window.alert( "the number of elements in the player array is = " + new_newElemements );
+			//var new_newElemements = g_Contact_players.length;
+			// window.alert( "the number of elements in the player array is = " + new_newElemements );
+
+			// Creating an option, because we want to add it to our select container
+			var option = document.createElement("option");
+
+			// The we set the text attribute of our option to the following
+			// format: <last_name>, <first_name>
+			option.text = lName + ", " + fName;
+
+			document.players.player_selection.add( option );
 		}
 
 		function UpdatePlayerSelection()
@@ -103,7 +118,7 @@
 				</tr>
 			</table>
 			
-			<select size=13 style="width : 150px" onselect="UpdatePlayerSelection()">
+			<select name = "player_selection" size=13 style="width : 150px" onselect="UpdatePlayerSelection()">
 				<option name="playa value="">Empty</option>
 			</select>
 		</form>
