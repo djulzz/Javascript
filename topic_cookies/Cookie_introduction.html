@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<!-- //document.cookie = "name=" + encodeURIComponent(document.forms[0].name.value);
+
+        var queryData = decodeURIComponent(document.cookie);
+        var queryArray = queryData.split("; "); -->
+</head>
+<body>
+<script type="text/javascript">
+	// test on how encodeURIComponent works
+	var encoded_name = encodeURIComponent( "Kaisau" );
+	var encoded_age = encodeURIComponent( 34 );
+
+	document.cookie = "name=" + encoded_name;
+	document.cookie = "age=" + encoded_age;
+
+	var CookieAsHugeString = decodeURIComponent( document.cookie );
+	var splitting_pattern = "; ";
+	var individual_elements= CookieAsHugeString.split( splitting_pattern );
+	
+	var number_elements = individual_elements.length;
+	for( var i = 0; i < number_elements; i++ )
+	{
+		document.write( individual_elements[ i ] + "<br>");
+	}
+	// document.cookie = "name=" + encodeURIComponent( "Julien" );
+	// document.cookie = "age=" + encodeURIComponent( 34 );
+</script>
+</body>
+</html>
