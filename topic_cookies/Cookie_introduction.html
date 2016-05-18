@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-<!-- //document.cookie = "name=" + encodeURIComponent(document.forms[0].name.value);
+	<html>
+		<head>
+			<title></title>
+		</head>
+		<body>
+			<h1>some Title Here</h1>
+			<script type="text/javascript">
+			    // We check if the cookie has ever been create before.
+			    // because if the huge string we get back is empty, it means 
+			    // we never created a cookie to begin with.
 
-        var queryData = decodeURIComponent(document.cookie);
-        var queryArray = queryData.split("; "); -->
-</head>
-<body>
-<script type="text/javascript">
-	// test on how encodeURIComponent works
-	var encoded_name = encodeURIComponent( "Kaisau" );
-	var encoded_age = encodeURIComponent( 34 );
+				var CookieAsHugeString = decodeURIComponent( document.cookie );
+				if( !CookieAsHugeString ) // I never created a cookie before, so I do so here
+				{
+					document.write( "Hey, looks like this is your first visit <br>");
+					var encoded_counter = encodeURIComponent( 1 );
+					document.cookie = "counter=" + encoded_counter;
+				}
+				else
+				{ // Well, looks like we have a cookie
+					var splitting_pattern = "=";
+					var individual_elements= CookieAsHugeString.split( splitting_pattern );
+					var counter_as_string = individual_elements[ 1 ];
+					var counter = Number( counter_as_string );
+					counter = counter + 1;
+					document.write( "Page Visited for the " + counter + " time <br>");
+					var encoded_counter = encodeURIComponent( counter );
+					document.cookie = "counter=" + encoded_counter;
+				}
 
-	document.cookie = "name=" + encoded_name;
-	document.cookie = "age=" + encoded_age;
-
-	var CookieAsHugeString = decodeURIComponent( document.cookie );
-	var splitting_pattern = "; ";
-	var individual_elements= CookieAsHugeString.split( splitting_pattern );
-	
-	var number_elements = individual_elements.length;
-	for( var i = 0; i < number_elements; i++ )
-	{
-		document.write( individual_elements[ i ] + "<br>");
-	}
-	// document.cookie = "name=" + encodeURIComponent( "Julien" );
-	// document.cookie = "age=" + encodeURIComponent( 34 );
-</script>
+			</script>
 </body>
 </html>
