@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+
+		<script type="text/javascript">
+			var g_selected_operation = 0;
+			var g_selected_number    = 0;
+
+			function UpdateOperation()
+			{
+				g_selected_operation = document.table_selection.ops.value;
+				return;
+			}
+
+			function UpdateNumberSelected()
+			{
+				g_selected_number = document.table_selection.selection.value;
+				return;
+			}
+
+		</script>
+	</head>
+
+	<body>
+
+		<form name="table_selection">
+			<select name="ops" onchange="UpdateOperation()">
+				<option value="+">+</option>
+				<option value="*">*</option>
+			</select>
+
+			<select name="selection" onchange="UpdateNumberSelected()">
+				<option name="selection" value="0">0</option>
+				<option name="selection" value="1">1</option>
+				<option name="selection" value="2">2</option>
+				<option name="selection" value="3">3</option>
+				<option name="selection" value="4">4</option>
+				<option name="selection" value="5">5</option>
+				<option name="selection" value="6">6</option>
+				<option name="selection" value="7">7</option>
+				<option name="selection" value="8">8</option>
+				<option name="selection" value="9">9</option>
+				<option name="selection" value="10">10</option>
+			</select>
+		</form>
+	</body>
+</html>
