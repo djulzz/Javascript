@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Guessing Game</title>
+		<script type="text/javascript">
+			var g_word_to_guess = "programming";
+
+			function Guess()
+			{
+				var myGuess = document.guessing_form.input.value;
+				var nLetters = g_word_to_guess.length;
+			}
+		</script>
+	</head>
+
+
+	<body>
+	<form name="guessing_form">
+		Word to guess<input type="text" name="word_to_guess" value="***********"> <br>
+		Your Input<input type="text" name="input" value=""><br>
+		<input type="button" name="btn_guess" value="Guess!" onclick="Guess()">
+	</form>
+	</body>
+</html>

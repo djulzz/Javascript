@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="js_styles.css">
+		<title>Dynamic Html</title>
+
+		<script type="text/javascript">
+			function ModifyH1()
+			{
+				document.the_form.the_button.style.fontSize='2em';
+				return;
+			}
+
+			function modifyStyle1()
+			{
+				var p1 = document.getElementById( 'p1' );
+				p1.style.fontWeight = 'bold';
+				p1.style.color = 'blue';
+			}
+
+			function modifyStyle2()
+			{
+				var p1 = document.getElementById( 'p1' );
+				p1.style.color = 'black';
+				p1.style.fontWeight = 'normal';
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>Dynamic Html</h1>
+
+		<form name="the_form">
+			<input type="button" name="the_button" value="Click Me" onclick="ModifyH1()">
+		</form>
+
+		<p id="p1" onmouseover="modifyStyle1()" onmouseout="modifyStyle2()">
+			Some text.
+			Some more Text.
+			Even more text.
+		</p>
+
+	</body>
+</html>
