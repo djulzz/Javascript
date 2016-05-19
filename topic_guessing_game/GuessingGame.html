@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Guessing Game</title>
+		<link rel="stylesheet" type="text/css" href="./../styles/js_styles.css">
+		<script type="text/javascript">
+
+			////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////
+			var g_secret_word = "secret";
+			var g_crypted_secret_word = "";
+			var g_guess_table;
+			var g_score = 0;
+
+			////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////
+			function UpdateGame()
+			{
+				var len = g_secret_word.length;
+				var input = document.the_form.input.value;
+
+				var nMatches = 0;
+				var str_current_input = input;
+				str_current_input = str_current_input.toLowerCase();
+				
+				//window.alert( 1 );
+
+				var crypted = "";
+				for( var i = 0; i < len; i++ ) {
+				 	var str_current_letter = g_secret_word[ i ];
+				 	str_current_letter = str_current_letter.toLowerCase();
+
+				 	// this variable keeps a tab on the current match
+				 	var temp_match = 0;
+				 	if( str_current_input == str_current_letter )
+				 	{
+				 		temp_match = 1;
+				 		crypted = crypted + g_secret_word.charAt( i );
+				 	} else {
+				 		crypted = crypted + g_crypted_secret_word.charAt( i );
+				 	}
+
+				 	// but...
+				 	// if we guessed now, but had also guessed before
+				 	// we should not be rewarded more than ONCE!!!
+				 	if( ( temp_match == 1) && ( g_guess_table[ i ] == 0 ) )
+				 	{
+				 		g_guess_table[ i ] = 1;
+				 		nMatches = nMatches + 1;
+				 	}
+				}
+				g_crypted_secret_word = crypted;
+
+				document.the_form.secret.value = g_crypted_secret_word.toString();
+
+				document.the_form.input.value = "";
+				return;
+			}
+
+			////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////
+			function InitGame()
+			{
+				g_guess_table = new Array();
+				g_crypted_secret_word = "";
+
+				var len = g_secret_word.length;
+				for( var i = 0; i < len; i++ )
+				{
+					g_guess_table.push( 0 );
+					g_crypted_secret_word = g_crypted_secret_word + "*";
+				}
+				document.the_form.secret.value = g_crypted_secret_word.toString();
+				
+				return;
+			}
+		</script>
+	</head>
+
+	<body onload="InitGame()">
+
+		<h1>Guessing Game</h1>
+
+		<form name="the_form">
+			<p>
+				Enter your Guess in the Box Below.
+			</p>
+			<table>
+				<tr>
+					<th>
+						Your Guessing Letter
+					</th>
+					<th>
+						The Secret Word
+					</th>
+					<th>
+						Your Score
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="input" value="">
+					</td>
+					<td>
+						<input type="text" name="secret" value="">
+					</td>
+					<td>
+						<input type="text" name="score" value="">
+					</td>
+				</tr>
+			</table>
+			<br>
+			<input type="button" name="the_button" value="Guess!" onclick="UpdateGame()">
+		</form>
+	</body>
+</html>
