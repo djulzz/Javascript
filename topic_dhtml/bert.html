@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+
+		<script type="text/javascript">
+			function process()
+			{
+				var index = document.da_form.sport_selection.selectedIndex;
+				var value = document.da_form.sport_selection.options[ index ].value;
+				window.alert( "You selected the sport = " + value );
+			}
+		</script>
+	</head>
+	<body>
+
+		<form name="da_form">
+			<select name = "sport_select" id="sport_selection" onclick="process()">
+				<option name="football" value="football">Football</option>
+				<option name="basket" value="basket">Basketball</option>
+				<option name="tennis" value="tennis">Tennis</option>
+			</select>
+		</form>
+	</body>
+</html>

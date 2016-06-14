@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Some Clues for Ch. 11 Assignment
+	</title>
+	<link rel="stylesheet" type="text/css" href="./../styles/js_styles.css">
+
+	<script type="text/javascript">
+
+		function Show()
+		{
+			document.getElementsById( "sport" ).style.visibility = "visible";
+			return;
+		}
+
+		function Hide()
+		{
+			document.getElementsByClassName( "sport" ).style.visibility = "hidden";
+			return;
+		}
+
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Sport 1</td>
+			<td>Sport 2</td>
+			<td>Sport 3</td>
+		</tr>
+
+		<tr>
+			<td>
+				<table class="sport" id="s1" style="visibility:hidden;" onmouseover="Show()" onmouseout="Hide()">
+					<tr><td>Link1</td></tr>
+					<tr><td>Link2</td></tr>
+					<tr><td>Link3</td></tr>
+				</table>
+			</td>
+
+			<td>
+				<table class="sport" style="visibility:hidden;" onmouseover="Show()" onmouseout="Hide()">
+					<tr><td>Link1</td></tr>
+					<tr><td>Link2</td></tr>
+					<tr><td>Link3</td></tr>
+				</table>
+			</td>
+
+			<td>
+				<table class="sport" style="visibility:hidden;" onmouseover="Show()" onmouseout="Hide()">
+					<tr><td>Link1</td></tr>
+					<tr><td>Link2</td></tr>
+					<tr><td>Link3</td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
